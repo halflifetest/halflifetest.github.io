@@ -48499,14 +48499,14 @@
           return finishProcessingFn(errorObj, segment);
         }
 
-        // if (response.byteLength !== 16) {
-        //   return finishProcessingFn({
-        //     status: request.status,
-        //     message: 'Invalid HLS key at URL: ' + request.uri,
-        //     code: REQUEST_ERRORS.FAILURE,
-        //     xhr: request
-        //   }, segment);
-        // }
+        if (response.byteLength !== 16) {
+          return finishProcessingFn({
+            status: request.status,
+            message: 'Invalid HLS key at URL: ' + request.uri,
+            code: REQUEST_ERRORS.FAILURE,
+            xhr: request
+          }, segment);
+        }
 
         var view = new DataView(response);
 
